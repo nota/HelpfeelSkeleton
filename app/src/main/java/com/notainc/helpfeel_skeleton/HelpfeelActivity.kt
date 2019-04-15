@@ -1,5 +1,6 @@
 package com.notainc.helpfeel_skeleton
 
+import android.app.DownloadManager
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
@@ -35,10 +36,23 @@ class HelpfeelActivity : AppCompatActivity() {
 
     fun setWebView() {
         val webview: WebView = findViewById(R.id.helpfeel_webview)
-        webview.setWebViewClient(WebViewClient())
         webview.clearHistory()
-        webview.getSettings().setJavaScriptEnabled(true)
-        webview.getSettings().setJavaScriptCanOpenWindowsAutomatically(true)
+
+        webview.webViewClient = object: WebViewClient() {
+            override fun shouldOverrideUrlLoading (view: WebView, url: String): Boolean {
+                // /product等への遷移を奪って、ChatSupportを開き、自身を閉じる
+                if (url.endsWith("/product") || url.endsWith("/help-jp/")) {
+                    webview.stopLoading()
+                    startChatSupport().apply{}
+                    finish().apply{}
+                    return true
+                }
+                return false
+            }
+        }
+
+        webview.settings.javaScriptEnabled = true
+        webview.settings.javaScriptCanOpenWindowsAutomatically = true
         webview.loadUrl(this.helpfeelUrl)
     }
 

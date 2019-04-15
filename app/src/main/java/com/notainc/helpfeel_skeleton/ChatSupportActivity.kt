@@ -26,8 +26,8 @@ class ChatSupportActivity : AppCompatActivity() {
     fun setToolbarMenus() {
         val toolbar: Toolbar = findViewById(R.id.toolbar_chat_support)
         // 戻るボタン
-        toolbar.setNavigationIcon(R.drawable.ic_back)
-        toolbar.setNavigationOnClickListener { onClickNav() }
+        // toolbar.setNavigationIcon(R.drawable.ic_back)
+        // toolbar.setNavigationOnClickListener { onClickNav() }
         // メニュー
         toolbar.inflateMenu(R.menu.chat_support)
         toolbar.setOnMenuItemClickListener{ onClickNavMenu() }

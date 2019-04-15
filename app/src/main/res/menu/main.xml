@@ -5,4 +5,8 @@
           android:title="@string/action_settings"
           android:orderInCategory="100"
           app:showAsAction="never"/>
+    <item android:id="@+id/action_blue"
+          android:title="@string/action_blue"
+          android:orderInCategory="100"
+          app:showAsAction="never"/>
 </menu>

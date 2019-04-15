@@ -1,6 +1,7 @@
 package com.notainc.helpfeel_skeleton
 
 import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
 import android.support.design.widget.Snackbar
 import android.support.design.widget.NavigationView
@@ -9,15 +10,24 @@ import android.support.v7.app.ActionBarDrawerToggle
 import android.support.v7.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
+import android.support.v7.widget.Toolbar
+import android.widget.LinearLayout
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
-import com.notainc.helpfeel_skeleton.HelpfeelActivity
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
+    var todayColorPrimary: Int
+
+    init {
+        todayColorPrimary = Color.GRAY
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        this.todayColorPrimary = getColor(R.color.colorPrimary)
+
         setSupportActionBar(toolbar)
 
         fab.setOnClickListener { view ->
@@ -53,7 +63,13 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         when (item.itemId) {
-            R.id.action_settings -> return true
+            R.id.action_settings -> {
+                return true
+            }
+            R.id.action_blue -> {
+                this.updateTodayColorPrimary(Color.BLUE)
+                return true
+            }
             else -> return super.onOptionsItemSelected(item)
         }
     }
@@ -75,10 +91,12 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             }
             R.id.nav_helpfeel -> {
                 val intent = Intent(this, HelpfeelActivity::class.java)
+                intent.putExtra("todayColorPrimary", this.todayColorPrimary)
                 startActivity(intent)
             }
             R.id.nav_chat_support -> {
                 val intent = Intent(this, ChatSupportActivity::class.java)
+                intent.putExtra("todayColorPrimary", this.todayColorPrimary)
                 startActivity(intent)
             }
             R.id.nav_share -> {
@@ -91,5 +109,14 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
         drawer_layout.closeDrawer(GravityCompat.START)
         return true
+    }
+
+    fun updateTodayColorPrimary(color: Int) {
+        this.todayColorPrimary = color
+        val toolbar: Toolbar = findViewById(R.id.toolbar)
+        toolbar.setBackgroundColor(color)
+        window.setStatusBarColor(color)
+        val drawerBg: LinearLayout = findViewById(R.id.drawer_bg)
+        drawerBg.setBackgroundColor(color)
     }
 }

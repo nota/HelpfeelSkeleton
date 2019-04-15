@@ -1,7 +1,7 @@
 package com.notainc.helpfeel_skeleton
 
-import android.app.DownloadManager
 import android.content.Intent
+import android.graphics.Color
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.Toolbar
@@ -12,16 +12,19 @@ import android.webkit.WebViewClient
 
 class HelpfeelActivity : AppCompatActivity() {
     private val helpfeelUrl: String
+    private var toolbarBgColor: Int
 
     init {
         this.helpfeelUrl = "https://helpfeel.notainc.com/SFCHelp"
+        this.toolbarBgColor = Color.GRAY
     }
 
     override fun onCreate(savedInstanceState:Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_helpfeel)
+        this.toolbarBgColor = intent.getIntExtra("todayColorPrimary", this.toolbarBgColor)
 
-        this.setToolbarMenus()
+        this.setToolbar()
         this.setWebView()
     }
 
@@ -56,8 +59,9 @@ class HelpfeelActivity : AppCompatActivity() {
         webview.loadUrl(this.helpfeelUrl)
     }
 
-    fun setToolbarMenus () {
+    fun setToolbar () {
         val toolbar: Toolbar = findViewById(R.id.toolbar_helpfeel)
+        toolbar.setBackgroundColor(this.toolbarBgColor)
         toolbar.setNavigationIcon(R.drawable.ic_back)
         toolbar.setNavigationOnClickListener { onClickNav() }
         toolbar.inflateMenu(R.menu.helpfeel)
@@ -80,6 +84,7 @@ class HelpfeelActivity : AppCompatActivity() {
 
     fun startChatSupport() {
         val intent = Intent(applicationContext, ChatSupportActivity::class.java)
+        intent.putExtra("todayColorPrimary", this.toolbarBgColor)
         startActivity(intent)
     }
 }

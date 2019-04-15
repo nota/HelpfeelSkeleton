@@ -1,5 +1,6 @@
 package com.notainc.helpfeel_skeleton
 
+import android.graphics.Color
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.Toolbar
@@ -10,7 +11,7 @@ class ChatSupportActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_chat_support)
 
-        this.setToolbarMenus()
+        this.setToolbar()
     }
 
     fun onClickNav() {
@@ -23,12 +24,10 @@ class ChatSupportActivity : AppCompatActivity() {
         return true
     }
 
-    fun setToolbarMenus() {
+    fun setToolbar() {
         val toolbar: Toolbar = findViewById(R.id.toolbar_chat_support)
-        // 戻るボタン
-        // toolbar.setNavigationIcon(R.drawable.ic_back)
-        // toolbar.setNavigationOnClickListener { onClickNav() }
-        // メニュー
+        toolbar.setBackgroundColor(intent.getIntExtra("todayColorPrimary", Color.GRAY))
+
         toolbar.inflateMenu(R.menu.chat_support)
         toolbar.setOnMenuItemClickListener{ onClickNavMenu() }
     }

@@ -27,8 +27,11 @@
             <item
                     android:id="@+id/nav_helpfeel"
                     android:icon="@drawable/ic_menu_help"
-                    android:title="Helpfeel"/>
-
+                    android:title="Guide"/>
+            <item
+                    android:id="@+id/nav_chat_support"
+                    android:icon="@drawable/ic_menu_chat_support"
+                    android:title="Chat support"/>
             <item
                     android:id="@+id/nav_share"
                     android:icon="@drawable/ic_menu_share"

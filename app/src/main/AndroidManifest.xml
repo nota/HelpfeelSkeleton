@@ -21,7 +21,8 @@
         </activity>
         <activity
             android:name=".HelpfeelActivity"
-            android:label="@string/helpfeel_activity_label">
+            android:label="@string/helpfeel_activity_label"
+            android:theme="@style/AppTheme.NoActionBar">
         </activity>
         <activity
             android:name=".ChatSupportActivity"

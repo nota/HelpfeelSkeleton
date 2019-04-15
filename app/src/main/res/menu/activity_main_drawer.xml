@@ -26,7 +26,7 @@
         <menu>
             <item
                     android:id="@+id/nav_helpfeel"
-                    android:icon="@drawable/ic_menu_share"
+                    android:icon="@drawable/ic_menu_help"
                     android:title="Helpfeel"/>
 
             <item

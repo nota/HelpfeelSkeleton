@@ -1,18 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v4.widget.DrawerLayout
+<LinearLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:id="@+id/drawer_layout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:fitsSystemWindows="true"
-        tools:openDrawer="start">
+        android:layout_height="match_parent">
 
-    <!--<include-->
-            <!--layout="@layout/app_bar_main"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="match_parent"/>-->
     <include layout="@layout/content_helpfeel"/>
 
     <android.support.design.widget.NavigationView
@@ -24,4 +16,4 @@
             app:headerLayout="@layout/nav_header_main"
             app:menu="@menu/activity_main_drawer"/>
 
-</android.support.v4.widget.DrawerLayout>
+</LinearLayout>

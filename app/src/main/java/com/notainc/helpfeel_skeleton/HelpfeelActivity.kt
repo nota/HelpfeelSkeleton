@@ -7,8 +7,6 @@ import android.webkit.WebView
 import android.webkit.WebViewClient
 import android.view.KeyEvent.KEYCODE_BACK
 
-
-
 class HelpfeelActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState:Bundle?) {
         super.onCreate(savedInstanceState)

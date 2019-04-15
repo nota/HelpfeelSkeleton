@@ -25,7 +25,8 @@
         </activity>
         <activity
             android:name=".ChatSupportActivity"
-            android:label="@string/chat_support_activity_label">
+            android:label="@string/chat_support_activity_label"
+            android:theme="@style/AppTheme.NoActionBar">
         </activity>
     </application>
 

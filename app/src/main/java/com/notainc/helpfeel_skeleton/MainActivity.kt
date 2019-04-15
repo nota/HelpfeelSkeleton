@@ -77,6 +77,10 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 val intent = Intent(this, HelpfeelActivity::class.java)
                 startActivity(intent)
             }
+            R.id.nav_chat_support -> {
+                val intent = Intent(this, ChatSupportActivity::class.java)
+                startActivity(intent)
+            }
             R.id.nav_share -> {
 
             }

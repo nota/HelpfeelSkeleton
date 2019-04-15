@@ -63,11 +63,20 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         when (item.itemId) {
-            R.id.action_settings -> {
+            R.id.action_red -> {
+                this.updateTodayColorPrimary(Color.parseColor("#F44336"))
+                return true
+            }
+            R.id.action_green -> {
+                this.updateTodayColorPrimary(Color.parseColor("#388E3C"))
                 return true
             }
             R.id.action_blue -> {
-                this.updateTodayColorPrimary(Color.BLUE)
+                this.updateTodayColorPrimary(Color.parseColor("#0336FF"))
+                return true
+            }
+            R.id.action_blue_gray -> {
+                this.updateTodayColorPrimary(Color.parseColor("#546E7A"))
                 return true
             }
             else -> return super.onOptionsItemSelected(item)

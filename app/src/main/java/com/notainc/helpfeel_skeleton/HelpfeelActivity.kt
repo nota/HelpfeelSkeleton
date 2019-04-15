@@ -2,16 +2,18 @@ package com.notainc.helpfeel_skeleton
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v7.widget.Toolbar
 import android.view.KeyEvent
 import android.webkit.WebView
 import android.webkit.WebViewClient
-import android.view.KeyEvent.KEYCODE_BACK
+
+//import android.webkit.WebChromeClient
 
 class HelpfeelActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState:Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_helpfeel)
-        val webview: WebView = findViewById<WebView>(R.id.helpfeel_webview)
+        val webview: WebView = findViewById(R.id.helpfeel_webview)
         webview.setWebViewClient(WebViewClient())
         webview.clearHistory()
         webview.getSettings().setJavaScriptEnabled(true)

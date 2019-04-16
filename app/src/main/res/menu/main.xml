@@ -21,4 +21,8 @@
           android:title="@string/action_blue_gray"
           android:orderInCategory="100"
           app:showAsAction="never"/>
+    <item android:id="@+id/action_set_webview_url"
+          android:title="@string/action_url_settings"
+          android:orderInCategory="100"
+          app:showAsAction="never"/>
 </menu>

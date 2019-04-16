@@ -1,5 +1,6 @@
 package com.notainc.helpfeel_skeleton
 
+import android.content.DialogInterface
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
@@ -7,6 +8,7 @@ import android.support.design.widget.Snackbar
 import android.support.design.widget.NavigationView
 import android.support.v4.view.GravityCompat
 import android.support.v7.app.ActionBarDrawerToggle
+import android.support.v7.app.AlertDialog
 import android.support.v7.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
@@ -14,12 +16,18 @@ import android.support.v7.widget.Toolbar
 import android.widget.LinearLayout
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
+import android.view.LayoutInflater
+import android.widget.EditText
+
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
     var todayColorPrimary: Int
+    var webViewUrl: String
 
     init {
         todayColorPrimary = Color.GRAY
+        // webViewUrl = "https://helpfeel.notainc.com"
+        webViewUrl = "https://helpfeel.notainc.com/SFCHelp"
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -79,6 +87,10 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 this.updateTodayColorPrimary(Color.parseColor("#546E7A"))
                 return true
             }
+            R.id.action_set_webview_url -> {
+                this.showDialogAndUpdateWebViewUrl()
+                return true
+            }
             else -> return super.onOptionsItemSelected(item)
         }
     }
@@ -101,6 +113,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             R.id.nav_helpfeel -> {
                 val intent = Intent(this, HelpfeelActivity::class.java)
                 intent.putExtra("todayColorPrimary", this.todayColorPrimary)
+                intent.putExtra("webViewUrl", this.webViewUrl)
                 startActivity(intent)
             }
             R.id.nav_chat_support -> {
@@ -119,6 +132,25 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         drawer_layout.closeDrawer(GravityCompat.START)
         return true
     }
+
+    fun showDialogAndUpdateWebViewUrl () {
+        val layoutInflater = LayoutInflater.from(this)
+        val promptWebViewUrl = layoutInflater.inflate(R.layout.dialog_prompt, null)
+        val alertDialogBuilder = AlertDialog.Builder(this)
+        alertDialogBuilder.setView(promptWebViewUrl)
+
+        val input = promptWebViewUrl.findViewById<EditText>(R.id.input_webview_url)
+        input.setText(this.webViewUrl)
+        alertDialogBuilder.setPositiveButton("Ok") { dialog, id ->
+            val url = input.getText()
+            if (url.isNotEmpty()) this.webViewUrl = url.toString()
+        }
+
+        alertDialogBuilder.setTitle("WebView URL:")
+        val alertDialog = alertDialogBuilder.create()
+        alertDialog.show()
+    }
+
 
     fun updateTodayColorPrimary(color: Int) {
         this.todayColorPrimary = color

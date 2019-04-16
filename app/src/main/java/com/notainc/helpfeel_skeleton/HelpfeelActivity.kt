@@ -11,17 +11,19 @@ import android.webkit.WebView
 import android.webkit.WebViewClient
 
 class HelpfeelActivity : AppCompatActivity() {
-    private val helpfeelUrl: String
+    private var helpfeelUrl: String
     private var toolbarBgColor: Int
 
     init {
-        this.helpfeelUrl = "https://helpfeel.notainc.com/SFCHelp"
+        this.helpfeelUrl = ""
         this.toolbarBgColor = Color.GRAY
     }
 
     override fun onCreate(savedInstanceState:Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_helpfeel)
+
+        this.helpfeelUrl = intent.getStringExtra("webViewUrl")
         this.toolbarBgColor = intent.getIntExtra("todayColorPrimary", this.toolbarBgColor)
 
         this.setToolbar()

@@ -1,7 +1,6 @@
 package com.notainc.helpfeel_skeleton
 
 import android.app.PendingIntent
-import android.content.DialogInterface
 import android.content.Intent
 import android.graphics.BitmapFactory
 import android.graphics.Color
@@ -22,9 +21,6 @@ import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
 import android.view.LayoutInflater
 import android.widget.EditText
-import android.graphics.Bitmap
-
-
 
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
@@ -33,7 +29,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
     init {
         todayColorPrimary = Color.GRAY
-        // webViewUrl = "https://helpfeel.notainc.com"
         webViewUrl = "https://helpfeel.notainc.com/SFCHelp"
     }
 

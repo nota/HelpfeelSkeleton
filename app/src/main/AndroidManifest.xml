@@ -20,6 +20,11 @@
             </intent-filter>
         </activity>
         <activity
+            android:name=".HelpfeelChromeActivity"
+            android:label="@string/helpfeel_chrome_activity_label"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
+        <activity
             android:name=".HelpfeelActivity"
             android:label="@string/helpfeel_activity_label"
             android:theme="@style/AppTheme.NoActionBar">

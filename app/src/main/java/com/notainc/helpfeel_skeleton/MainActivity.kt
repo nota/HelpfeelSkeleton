@@ -110,6 +110,11 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             R.id.nav_manage -> {
 
             }
+            R.id.nav_helpfeel_chrome -> {
+                val intent = Intent(this, HelpfeelChromeActivity::class.java)
+                intent.putExtra("webViewUrl", this.webViewUrl)
+                startActivity(intent)
+            }
             R.id.nav_helpfeel -> {
                 val intent = Intent(this, HelpfeelActivity::class.java)
                 intent.putExtra("todayColorPrimary", this.todayColorPrimary)

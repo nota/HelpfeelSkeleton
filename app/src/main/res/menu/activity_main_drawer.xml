@@ -25,9 +25,13 @@
     <item android:title="Communicate">
         <menu>
             <item
+                    android:id="@+id/nav_helpfeel_chrome"
+                    android:icon="@drawable/ic_menu_help"
+                    android:title="Guide (Chrome Custom Tabs)"/>
+            <item
                     android:id="@+id/nav_helpfeel"
                     android:icon="@drawable/ic_menu_help"
-                    android:title="Guide"/>
+                    android:title="Guide (WebView)"/>
             <item
                     android:id="@+id/nav_chat_support"
                     android:icon="@drawable/ic_menu_chat_support"

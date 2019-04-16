@@ -3,7 +3,9 @@ package com.notainc.helpfeel_skeleton
 import android.content.DialogInterface
 import android.content.Intent
 import android.graphics.Color
+import android.net.Uri
 import android.os.Bundle
+import android.support.customtabs.CustomTabsIntent
 import android.support.design.widget.Snackbar
 import android.support.design.widget.NavigationView
 import android.support.v4.view.GravityCompat
@@ -111,9 +113,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
             }
             R.id.nav_helpfeel_chrome -> {
-                val intent = Intent(this, HelpfeelChromeActivity::class.java)
-                intent.putExtra("webViewUrl", this.webViewUrl)
-                startActivity(intent)
+                this.startChromeCustomTabsIntent()
             }
             R.id.nav_helpfeel -> {
                 val intent = Intent(this, HelpfeelActivity::class.java)
@@ -164,5 +164,11 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         window.setStatusBarColor(color)
         val drawerBg: LinearLayout = findViewById(R.id.drawer_bg)
         drawerBg.setBackgroundColor(color)
+    }
+
+    fun startChromeCustomTabsIntent() {
+        val builder = CustomTabsIntent.Builder()
+        val customTabsIntent = builder.build()
+        customTabsIntent.launchUrl(this, Uri.parse(this.webViewUrl))
     }
 }

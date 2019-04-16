@@ -168,6 +168,9 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
     fun startChromeCustomTabsIntent() {
         val builder = CustomTabsIntent.Builder()
+        builder
+            .setShowTitle(true)
+            .setToolbarColor(this.todayColorPrimary)
         val customTabsIntent = builder.build()
         customTabsIntent.launchUrl(this, Uri.parse(this.webViewUrl))
     }

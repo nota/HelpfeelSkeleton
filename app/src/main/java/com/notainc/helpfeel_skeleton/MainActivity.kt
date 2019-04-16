@@ -1,7 +1,9 @@
 package com.notainc.helpfeel_skeleton
 
+import android.app.PendingIntent
 import android.content.DialogInterface
 import android.content.Intent
+import android.graphics.BitmapFactory
 import android.graphics.Color
 import android.net.Uri
 import android.os.Bundle
@@ -20,6 +22,9 @@ import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
 import android.view.LayoutInflater
 import android.widget.EditText
+import android.graphics.Bitmap
+
+
 
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
@@ -168,10 +173,29 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
     fun startChromeCustomTabsIntent() {
         val builder = CustomTabsIntent.Builder()
+
+        setCustomTabsMenu(builder)
+        setActionButton(builder)
         builder
             .setShowTitle(true)
             .setToolbarColor(this.todayColorPrimary)
         val customTabsIntent = builder.build()
+
         customTabsIntent.launchUrl(this, Uri.parse(this.webViewUrl))
+    }
+
+    fun setCustomTabsMenu(builder: CustomTabsIntent.Builder) {
+        val menuIntent = Intent()
+        val pendingIntent = PendingIntent.getActivity(applicationContext, 0, menuIntent, 0)
+        builder.addMenuItem("Share", pendingIntent)
+    }
+
+    fun setActionButton(builder: CustomTabsIntent.Builder) {
+        val actionIntent = Intent(this, ChatSupportActivity::class.java)
+        actionIntent.putExtra("todayColorPrimary", this.todayColorPrimary) // 効かない
+
+        val pendingIntent = PendingIntent.getActivity(applicationContext, 0, actionIntent, 0)
+        val icon = BitmapFactory.decodeResource(resources, R.mipmap.ic_chat_support_bmp)
+        builder.setActionButton(icon, "Chat support", pendingIntent, true)
     }
 }

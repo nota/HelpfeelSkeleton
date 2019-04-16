@@ -5,8 +5,11 @@ import android.graphics.Color
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.Toolbar
+import android.util.Log
 import android.view.KeyEvent
 import android.view.MenuItem
+import android.webkit.PermissionRequest
+import android.webkit.WebChromeClient
 import android.webkit.WebView
 import android.webkit.WebViewClient
 
@@ -42,7 +45,7 @@ class HelpfeelActivity : AppCompatActivity() {
     fun setWebView() {
         val webview: WebView = findViewById(R.id.helpfeel_webview)
         webview.clearHistory()
-
+        
         webview.webViewClient = object: WebViewClient() {
             override fun shouldOverrideUrlLoading (view: WebView, url: String): Boolean {
                 // /product等への遷移を奪って、ChatSupportを開き、自身を閉じる
@@ -53,6 +56,13 @@ class HelpfeelActivity : AppCompatActivity() {
                     return true
                 }
                 return false
+            }
+        }
+
+        webview.webChromeClient = object: WebChromeClient() {
+            override fun onPermissionRequest(request: PermissionRequest) {
+                request.grant(request.resources)
+                Log.d("fooo", "onPermissionRequest")
             }
         }
 

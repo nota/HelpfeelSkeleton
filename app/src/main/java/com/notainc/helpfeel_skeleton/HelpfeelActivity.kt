@@ -5,17 +5,23 @@ import android.graphics.Color
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.Toolbar
-import android.util.Log
 import android.view.KeyEvent
 import android.view.MenuItem
 import android.webkit.PermissionRequest
 import android.webkit.WebChromeClient
 import android.webkit.WebView
 import android.webkit.WebViewClient
+import android.Manifest
+import android.content.pm.PackageManager
+import android.support.v4.app.ActivityCompat.requestPermissions
+import android.support.v4.content.ContextCompat.checkSelfPermission
+
 
 class HelpfeelActivity : AppCompatActivity() {
     private var helpfeelUrl: String
     private var toolbarBgColor: Int
+
+    private var PERMISSIONS_AT_WEBVIEW = 0
 
     init {
         this.helpfeelUrl = ""
@@ -42,10 +48,24 @@ class HelpfeelActivity : AppCompatActivity() {
         return super.onKeyDown(keyCode, event)
     }
 
+    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
+        when (requestCode) {
+            PERMISSIONS_AT_WEBVIEW -> {
+                if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    // yay!
+                    val webview: WebView = findViewById(R.id.helpfeel_webview)
+                    webview.reload()
+                }
+            }
+        }
+        return
+    }
+
+
     fun setWebView() {
         val webview: WebView = findViewById(R.id.helpfeel_webview)
         webview.clearHistory()
-        
+
         webview.webViewClient = object: WebViewClient() {
             override fun shouldOverrideUrlLoading (view: WebView, url: String): Boolean {
                 // /product等への遷移を奪って、ChatSupportを開き、自身を閉じる
@@ -59,10 +79,15 @@ class HelpfeelActivity : AppCompatActivity() {
             }
         }
 
+        val activity = this
         webview.webChromeClient = object: WebChromeClient() {
             override fun onPermissionRequest(request: PermissionRequest) {
-                request.grant(request.resources)
-                Log.d("fooo", "onPermissionRequest")
+                val permissionCheck = checkSelfPermission(activity, Manifest.permission.RECORD_AUDIO)
+                if (permissionCheck != PackageManager.PERMISSION_GRANTED) {
+                    requestPermissions(activity, arrayOf(Manifest.permission.RECORD_AUDIO), PERMISSIONS_AT_WEBVIEW)
+                } else {
+                    request.grant(request.resources)
+                }
             }
         }
 

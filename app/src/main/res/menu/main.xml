@@ -1,8 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
       xmlns:app="http://schemas.android.com/apk/res-auto">
-    <item android:id="@+id/action_settings"
+    <!-- <item android:id="@+id/action_settings"
           android:title="@string/action_settings"
+          android:orderInCategory="100"
+          app:showAsAction="never"/> -->
+    <item android:id="@+id/action_red"
+          android:title="@string/action_red"
+          android:orderInCategory="100"
+          app:showAsAction="never"/>
+    <item android:id="@+id/action_green"
+          android:title="@string/action_green"
+          android:orderInCategory="100"
+          app:showAsAction="never"/>
+    <item android:id="@+id/action_blue"
+          android:title="@string/action_blue"
+          android:orderInCategory="100"
+          app:showAsAction="never"/>
+    <item android:id="@+id/action_blue_gray"
+          android:title="@string/action_blue_gray"
+          android:orderInCategory="100"
+          app:showAsAction="never"/>
+    <item android:id="@+id/action_set_webview_url"
+          android:title="@string/action_url_settings"
           android:orderInCategory="100"
           app:showAsAction="never"/>
 </menu>

@@ -1,0 +1,8 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/action_helpfeel_close"
+        android:icon="@drawable/ic_toolbar_chat_support"
+        android:title="close"
+        app:showAsAction="always" />
+</menu>

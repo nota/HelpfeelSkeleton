@@ -1,9 +1,20 @@
 <resources>
-    <string name="app_name">Helpfeel Skeleton</string>
+    <string name="app_name">Your app</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="nav_header_title">Android Studio</string>
     <string name="nav_header_subtitle">android.studio@android.com</string>
     <string name="nav_header_desc">Navigation header</string>
-    <string name="action_settings">Settings</string>
+
+    <string name="action_url_settings">Set WebView URL</string>
+    <string name="action_red">Red</string>
+    <string name="action_green">Green</string>
+    <string name="action_blue">Blue</string>
+    <string name="action_blue_gray">Blue Gray</string>
+
+    <string name="main_activity_label">Your app</string>
+    <string name="chat_support_activity_label">Your app chat support</string>
+    <string name="helpfeel_activity_label">Your app guide</string>
+
+    <!--<string name="webview_default_url">https://helpfeel.notainc.com/SFCHelp</string>-->
 </resources>

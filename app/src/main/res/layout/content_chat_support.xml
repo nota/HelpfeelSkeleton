@@ -7,11 +7,11 @@
         android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
         tools:showIn="@layout/app_bar_main"
-        tools:context=".MainActivity">
+        tools:context=".ChatSupportActivity" android:orientation="vertical">
 
     <ImageView
         android:layout_width="180dp"
-        android:layout_height="180dp" android:src="@drawable/ic_home"
+        android:layout_height="180dp" android:src="@drawable/ic_menu_chat_support"
         android:id="@+id/imageView3"
         android:alpha=".3"
         android:layout_margin="32dp"/>
@@ -19,7 +19,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/main_activity_label"
+        android:text="@string/chat_support_activity_label"
         android:textSize="16dp"
         android:textAlignment="center"/>
 

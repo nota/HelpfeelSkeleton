@@ -7,12 +7,21 @@ import android.os.Bundle
 import android.support.v7.widget.Toolbar
 import android.view.KeyEvent
 import android.view.MenuItem
+import android.webkit.PermissionRequest
+import android.webkit.WebChromeClient
 import android.webkit.WebView
 import android.webkit.WebViewClient
+import android.Manifest
+import android.content.pm.PackageManager
+import android.support.v4.app.ActivityCompat.requestPermissions
+import android.support.v4.content.ContextCompat.checkSelfPermission
+
 
 class HelpfeelActivity : AppCompatActivity() {
     private var helpfeelUrl: String
     private var toolbarBgColor: Int
+
+    private var PERMISSIONS_AT_WEBVIEW = 0
 
     init {
         this.helpfeelUrl = ""
@@ -39,6 +48,20 @@ class HelpfeelActivity : AppCompatActivity() {
         return super.onKeyDown(keyCode, event)
     }
 
+    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
+        when (requestCode) {
+            PERMISSIONS_AT_WEBVIEW -> {
+                if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    // yay!
+                    val webview: WebView = findViewById(R.id.helpfeel_webview)
+                    webview.reload()
+                }
+            }
+        }
+        return
+    }
+
+
     fun setWebView() {
         val webview: WebView = findViewById(R.id.helpfeel_webview)
         webview.clearHistory()
@@ -53,6 +76,18 @@ class HelpfeelActivity : AppCompatActivity() {
                     return true
                 }
                 return false
+            }
+        }
+
+        val activity = this
+        webview.webChromeClient = object: WebChromeClient() {
+            override fun onPermissionRequest(request: PermissionRequest) {
+                val permissionCheck = checkSelfPermission(activity, Manifest.permission.RECORD_AUDIO)
+                if (permissionCheck != PackageManager.PERMISSION_GRANTED) {
+                    requestPermissions(activity, arrayOf(Manifest.permission.RECORD_AUDIO), PERMISSIONS_AT_WEBVIEW)
+                } else {
+                    request.grant(request.resources)
+                }
             }
         }
 

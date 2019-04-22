@@ -15,6 +15,7 @@
     <string name="main_activity_label">Your app</string>
     <string name="chat_support_activity_label">Your app chat support</string>
     <string name="helpfeel_activity_label">Your app guide</string>
+    <string name="helpfeel_chrome_activity_label">Your app guide!</string>
 
     <!--<string name="webview_default_url">https://helpfeel.notainc.com/SFCHelp</string>-->
 </resources>

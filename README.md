@@ -3,7 +3,7 @@
 ![](https://gyazo.com/875815e837aa40e107a0fcfb3c483e2d/raw)
 
 ## Versions
-- Kotlin
+- Kotlin 1.3.30
 - Android Studio 3.3.2
 
 ## External libraries or SDKs
@@ -15,7 +15,7 @@ $ git clone git@github.com:nota/HelpfeelSkeleton.git
 $ cd HelpfeelSkeleton
 ```
 
-Launch Android Studio and load the directory HelpfeelSkeleton/.
+Launch Android Studio and load the directory `HelpfeelSkeleton/`.
 
 ![](https://gyazo.com/809d29c605676567797e590f7079274a/raw)
 

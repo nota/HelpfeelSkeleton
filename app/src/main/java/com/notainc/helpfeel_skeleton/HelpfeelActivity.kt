@@ -92,6 +92,7 @@ class HelpfeelActivity : AppCompatActivity() {
         }
 
         webview.settings.javaScriptEnabled = true
+        webview.settings.domStorageEnabled = true
         webview.settings.javaScriptCanOpenWindowsAutomatically = true
         WebView.setWebContentsDebuggingEnabled(true)
         webview.loadUrl(this.helpfeelUrl)

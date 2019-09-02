@@ -29,7 +29,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
     init {
         todayColorPrimary = Color.GRAY
-        webViewUrl = "https://helpfeel.notainc.com/SFCHelp"
+        webViewUrl = "https://helpfeel.notainc.com/SFCHelp/"
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
